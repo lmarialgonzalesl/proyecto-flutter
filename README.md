@@ -1,4 +1,4 @@
-# SEICU - Relevamiento de Información de Predios In Situ
+# APP Movil - Relevamiento de Información de Predios In Situ
 
 Aplicación móvil desarrollada en Flutter como propuesta para que los **Grupos de Atención de Misión Social (GAMS)** puedan realizar el relevamiento de información de un predio de forma directa **in situ**, digitalizando el proceso de captura de datos catastrales, características del terreno, servicios disponibles y registro de construcciones.
 
