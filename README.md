@@ -1,17 +1,44 @@
-# mi_primer_app
+# SEICU - Relevamiento de Información de Predios In Situ
 
-A new Flutter project.
+Aplicación móvil desarrollada en Flutter como propuesta para que los **Grupos de Atención de Misión Social (GAMS)** puedan realizar el relevamiento de información de un predio de forma directa **in situ**, digitalizando el proceso de captura de datos catastrales, características del terreno, servicios disponibles y registro de construcciones.
 
-## Getting Started
+## Funcionalidades
 
-This project is a starting point for a Flutter application.
+- **Login** — Acceso seguro a la aplicación
+- **Trámites** — Listado de trámites en proceso con acceso a detalle
+- **Propiedad** — Registro de código catastral, geocódigo, ubicación en mapa interactivo (OpenStreetMap) y fotografías de frente y fondo
+- **Terreno** — Captura de características del terreno (accesibilidad, fondo, pendiente) y servicios (agua, luz, teléfono, internet) mediante acordeones
+- **Construcción** — Registro de bloques de construcción con número de bloque, cantidad de niveles y superficie
 
-A few resources to get you started if this is your first Flutter project:
+## Tecnologías
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- **Flutter** — Framework multiplataforma
+- **flutter_map + latlong2** — Mapas interactivos OpenStreetMap sin necesidad de API key
+- **image_picker** — Captura de fotografías desde la cámara del dispositivo
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Estructura del proyecto
+
+```
+lib/
+├── main.dart
+├── models/
+│   ├── tramite.dart
+│   ├── propiedad.dart
+│   ├── terreno.dart
+│   ├── construccion.dart
+│   └── bloque.dart
+└── screens/
+    ├── login_screen.dart
+    ├── tramites_list_screen.dart
+    ├── tramite_detail_screen.dart
+    ├── propiedad_screen.dart
+    ├── terreno_screen.dart
+    └── construccion_screen.dart
+```
+
+## Cómo ejecutar
+
+```bash
+flutter pub get
+flutter run
+```
