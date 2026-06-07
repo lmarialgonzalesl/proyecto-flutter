@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/terreno.dart';
 
 class TerrenoScreen extends StatefulWidget {
-  const TerrenoScreen({super.key});
+  final bool embedded;
+
+  const TerrenoScreen({super.key, this.embedded = false});
 
   @override
   State<TerrenoScreen> createState() => _TerrenoScreenState();
@@ -15,9 +17,7 @@ class _TerrenoScreenState extends State<TerrenoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Terreno')),
-      body: SingleChildScrollView(
+    final body = SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,8 +118,10 @@ class _TerrenoScreenState extends State<TerrenoScreen> {
             ),
           ],
         ),
-      ),
-    );
+      );
+
+    if (widget.embedded) return body;
+    return Scaffold(appBar: AppBar(title: const Text('Terreno')), body: body);
   }
 }
 

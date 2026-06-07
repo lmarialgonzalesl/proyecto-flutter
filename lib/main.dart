@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 
 void main() {
-  runApp(const SeicuApp());
+  runApp(const AppPredios());
 }
 
-class SeicuApp extends StatelessWidget {
-  const SeicuApp({super.key});
+class AppPredios extends StatelessWidget {
+  const AppPredios({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'SEICU - Gestión de Trámites',
+      title: 'Relevamiento de Predios',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,

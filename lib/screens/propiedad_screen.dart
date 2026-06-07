@@ -5,7 +5,9 @@ import 'package:latlong2/latlong.dart';
 import '../models/propiedad.dart';
 
 class PropiedadScreen extends StatefulWidget {
-  const PropiedadScreen({super.key});
+  final bool embedded;
+
+  const PropiedadScreen({super.key, this.embedded = false});
 
   @override
   State<PropiedadScreen> createState() => _PropiedadScreenState();
@@ -41,9 +43,7 @@ class _PropiedadScreenState extends State<PropiedadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Propiedad')),
-      body: SingleChildScrollView(
+    final body = SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,8 +176,10 @@ class _PropiedadScreenState extends State<PropiedadScreen> {
             ),
           ],
         ),
-      ),
-    );
+      );
+
+    if (widget.embedded) return body;
+    return Scaffold(appBar: AppBar(title: const Text('Propiedad')), body: body);
   }
 }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tramites_list_screen.dart';
+import 'navigation_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,17 +21,17 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _login() {
-    if (_usuarioController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
+    if (_usuarioController.text == 'admin' &&
+        _passwordController.text == 'admin') {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const TramitesListScreen(),
+          builder: (_) => const NavigationScreen(),
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ingrese usuario y contraseña')),
+        const SnackBar(content: Text('Usuario o contraseña incorrectos')),
       );
     }
   }
@@ -46,28 +46,33 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.home_work_rounded,
+                Icons.assignment_rounded,
                 size: 80,
                 color: Theme.of(context).primaryColor,
               ),
               const SizedBox(height: 16),
               Text(
-                'SEICU',
+                'Relevamiento de Predios',
                 style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).primaryColor,
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                'Sistema de Gestión',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[600],
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.amber),
+                ),
+                child: const Text(
+                  'Usuario: admin | Contraseña: admin',
+                  style: TextStyle(fontSize: 13, color: Colors.brown),
                 ),
               ),
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
               TextField(
                 controller: _usuarioController,
                 decoration: const InputDecoration(

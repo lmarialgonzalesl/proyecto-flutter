@@ -3,7 +3,9 @@ import '../models/bloque.dart';
 import '../models/construccion.dart';
 
 class ConstruccionScreen extends StatefulWidget {
-  const ConstruccionScreen({super.key});
+  final bool embedded;
+
+  const ConstruccionScreen({super.key, this.embedded = false});
 
   @override
   State<ConstruccionScreen> createState() => _ConstruccionScreenState();
@@ -47,17 +49,7 @@ class _ConstruccionScreenState extends State<ConstruccionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Construcción'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: _agregarBloque,
-          ),
-        ],
-      ),
-      body: _construccion.bloques.isEmpty
+    final body = _construccion.bloques.isEmpty
           ? const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -126,7 +118,20 @@ class _ConstruccionScreenState extends State<ConstruccionScreen> {
                   ),
                 );
               },
-            ),
+            );
+
+    if (widget.embedded) return body;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Construcción'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _agregarBloque,
+          ),
+        ],
+      ),
+      body: body,
       floatingActionButton: _construccion.bloques.isNotEmpty
           ? FloatingActionButton(
               onPressed: _agregarBloque,

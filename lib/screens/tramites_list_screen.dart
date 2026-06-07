@@ -3,7 +3,9 @@ import '../models/tramite.dart';
 import 'tramite_detail_screen.dart';
 
 class TramitesListScreen extends StatelessWidget {
-  const TramitesListScreen({super.key});
+  final bool embedded;
+
+  const TramitesListScreen({super.key, this.embedded = false});
 
   List<Tramite> _tramites() {
     return [
@@ -34,19 +36,7 @@ class TramitesListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tramites = _tramites();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mis Trámites'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, '/');
-            },
-          ),
-        ],
-      ),
-      body: tramites.isEmpty
+    final body = tramites.isEmpty
           ? const Center(
               child: Text(
                 'No hay trámites en proceso',
@@ -98,7 +88,22 @@ class TramitesListScreen extends StatelessWidget {
                   ),
                 );
               },
-            ),
+            );
+
+    if (embedded) return body;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Mis Trámites'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },
+          ),
+        ],
+      ),
+      body: body,
     );
   }
 

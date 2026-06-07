@@ -11,9 +11,9 @@ import 'package:mi_primer_app/main.dart';
 
 void main() {
   testWidgets('App renders login screen', (WidgetTester tester) async {
-    await tester.pumpWidget(const SeicuApp());
+    await tester.pumpWidget(const AppPredios());
 
-    expect(find.text('SEICU'), findsOneWidget);
+    expect(find.text('Relevamiento de Predios'), findsOneWidget);
     expect(find.text('Ingresar'), findsOneWidget);
   });
 }
